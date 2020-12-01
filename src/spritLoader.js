@@ -18,9 +18,12 @@ module.exports = async source => {
     (err, result) => {
       if (err) return err;
       // console.log(result, "<Buffer>化");
+      console.log(path.resolve("./"), __dirname, process.cwd());
+      //process.cwd() 方法会返回 Node.js 进程的当前工作目录。
       fs.writeFileSync(
-        path.join(process.cwd(), "dist/sprite.png"),
-        result.image
+        path.resolve("./") + "/dist/sprite.png",
+        result.image,
+        err => (err ? console.log(err) : console.log("success"))
       );
       source = source.replace(/url\((\S*)\?__sprite/g, match => {
         return `url("dist/sprite.png"`;

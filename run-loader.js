@@ -6,12 +6,12 @@ runLoaders(
   {
     resource: path.join(__dirname, "./src/index.css"),
     loaders: [path.join(__dirname, "./src/spritLoader.js")],
-    context: { 
+    context: {
       emitFile: () => {},
     },
     readResource: fs.readFile.bind(fs),
   },
   (err, result) => {
-    err ? console.log(err) : console.log(result);
+    err ? console.log(err) : console.log("done");
   }
 );
